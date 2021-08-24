@@ -1,5 +1,4 @@
 /node_modules/
-/img/
 *.DS_STORE
 /css/style.comp.css
 /css/style.concat.css
