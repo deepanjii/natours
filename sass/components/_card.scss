@@ -13,6 +13,7 @@
     right: 0;
     height: 52rem;
     width: 100%;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     transition: all .8s ease;
     border-radius: 3px;
@@ -120,10 +121,9 @@
       li {
         text-align: center;
         font-size: 1.5rem;
-        border-bottom: 1px solid $color-grey-light-2;
-
+        padding: 1rem;
         &:not(:last-child) {
-          padding: 1rem;
+          border-bottom: 1px solid $color-grey-light-2;
         }
       }
     }
@@ -147,6 +147,53 @@
     .price-value {
       font-size: 6rem;
       font-weight: 100;
+    }
+  }
+
+  // @include respond(tab-port) {
+    @media only screen and (max-width: 56.25em),
+    only screen and (hover: none) {
+    height: auto;
+    border-radius: 3px;
+    background-color: $color-white;
+    box-shadow: 0 1.5rem 3rem rgba($color-black, 0.15);
+
+    &__side {
+      position: relative;
+      height: auto;
+      box-shadow: none;
+
+      &--back {
+        transform: rotateY(0);
+        -webkit-clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    &:hover &__side--front {
+      transform: rotateY(0);
+    }
+
+    &__details {
+      padding: 0 3rem;
+    }
+
+    // CARD BACK SIDE STYLING
+    &__cta {
+      position: relative;
+      width: 100%;
+      top: 0;
+      left: 0;
+      transform: translate(0);
+      padding: 4rem;
+
+      .price-box {
+        margin-bottom: 3rem;
+      }
+
+      .price-value {
+        font-size: 4rem;
+      }
     }
   }
 }
